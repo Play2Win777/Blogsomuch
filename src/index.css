@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes neonPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.6); /* Subtle glow */
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.9); /* Slightly stronger glow */
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 102, 0, 0.6); /* Back to subtle glow */
+  }
+}
+@keyframes safetyGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(255, 191, 0, 0.6),  /* Amber */
+                0 0 11px rgba(255, 140, 0, 0.5), /* Darker Amber */
+                0 0 15px rgba(255, 165, 0, 0.4); /* Orange */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 191, 0, 0.9),
+                0 0 18px rgba(255, 140, 0, 0.8),
+                0 0 22px rgba(255, 165, 0, 0.7);
+  }
+}
+@keyframes durabilityGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(255, 255, 255, 0.6),
+                0 0 11px rgba(255, 255, 255, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.9),
+                0 0 18px rgba(255, 255, 255, 0.8),
+                0 0 22px rgba(255, 255, 255, 0.7);
+  }
+}
+@keyframes sportGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(0, 255, 255, 0.6),  /* Cyan */
+                0 0 11px rgba(0, 255, 0, 0.5),   /* Neon Green */
+                0 0 15px rgba(0, 191, 255, 0.4);  /* Electric Blue */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 18px rgba(0, 255, 0, 0.8),
+                0 0 22px rgba(0, 191, 255, 0.7);
+  }
+}
+@keyframes streakGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(0, 255, 255, 0.6),
+                0 0 11px rgba(0, 255, 0, 0.5),
+                0 0 15px rgba(0, 191, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 18px rgba(0, 255, 0, 0.8),
+                0 0 22px rgba(0, 191, 255, 0.7);
+  }
+}
+@keyframes techGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(0, 255, 255, 0.6),  /* Cyan */
+                0 0 11px rgba(0, 0, 255, 0.5),   /* Blue */
+                0 0 15px rgba(0, 191, 255, 0.4);  /* Light Blue */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 18px rgba(0, 0, 255, 0.8),
+                0 0 22px rgba(0, 191, 255, 0.7);
+  }
+}
+@keyframes shimmerGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(0, 255, 255, 0.6),
+                0 0 11px rgba(0, 0, 255, 0.5),
+                0 0 15px rgba(0, 191, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.9),
+                0 0 18px rgba(0, 0, 255, 0.8),
+                0 0 22px rgba(0, 191, 255, 0.7);
+  }
+}
+@keyframes ruggedGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(255, 140, 0, 0.6),  /* Muted Orange */
+                0 0 11px rgba(255, 165, 0, 0.5), /* Darker Orange */
+                0 0 15px rgba(255, 191, 0, 0.4); /* Amber */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 140, 0, 0.9),
+                0 0 18px rgba(255, 165, 0, 0.8),
+                0 0 22px rgba(255, 191, 0, 0.7);
+  }
+}
+@keyframes sleekGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(173, 216, 230, 0.6),  /* Light Blue */
+                0 0 11px rgba(135, 206, 250, 0.5), /* Sky Blue */
+                0 0 15px rgba(0, 191, 255, 0.4);   /* Deep Sky Blue */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(173, 216, 230, 0.9),
+                0 0 18px rgba(135, 206, 250, 0.8),
+                0 0 22px rgba(0, 191, 255, 0.7);
+  }
+}
+@keyframes ctaGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(255, 140, 0, 0.6),  /* Bright Orange */
+                0 0 11px rgba(255, 69, 0, 0.5),  /* Red-Orange */
+                0 0 15px rgba(255, 165, 0, 0.4);  /* Orange */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 140, 0, 0.9),
+                0 0 18px rgba(255, 69, 0, 0.8),
+                0 0 22px rgba(255, 165, 0, 0.7);
+  }
+}
+@keyframes newItemGlow {
+  0%, 100% {
+    box-shadow: 0 0 7px rgba(255, 0, 255, 0.6),  /* Magenta */
+                0 0 11px rgba(0, 255, 255, 0.5), /* Cyan */
+                0 0 15px rgba(255, 255, 0, 0.4);  /* Yellow */
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(255, 0, 255, 0.9),
+                0 0 18px rgba(0, 255, 255, 0.8),
+                0 0 22px rgba(255, 255, 0, 0.7);
+  }
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+.animate-safety-glow {
+  animation: safetyGlow 2s ease-in-out infinite;
+}
+.animate-durability-glow {
+  animation: durabilityGlow 2s ease-in-out infinite;
+}
+.animate-sport-glow {
+  animation: sportGlow 2s ease-in-out infinite;
+}
+.animate-streak-glow {
+  animation: streakGlow 2s ease-in-out infinite;
+}
+.animate-tech-glow {
+  animation: techGlow 2s ease-in-out infinite;
+}
+.animate-shimmer-glow {
+  animation: shimmerGlow 2s ease-in-out infinite;
+}
+.animate-rugged-glow {
+  animation: ruggedGlow 2s ease-in-out infinite;
+}
+.animate-sleek-glow {
+  animation: sleekGlow 2s ease-in-out infinite;
+}
+.animate-cta-glow {
+  animation: ctaGlow 2s ease-in-out infinite;
+}
+.animate-new-item-glow {
+  animation: newItemGlow 2s ease-in-out infinite;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-cyan-500 via-purple-500 to-pink-500 rounded-full;
+}

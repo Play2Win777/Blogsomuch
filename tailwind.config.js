@@ -1,45 +1,60 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        // Base colors
-        primary: {
-          light: '#f8f9fa', // Light bg
-          dark: '#121212',  // Dark bg
-        },
-        text: {
-          light: '#2d3748', // Light text
-          dark: '#e2e8f0',   // Dark text
-        },
-        
-        // Accent colors - light theme
-        accent: {
-          light: {
-            1: '#ff6b6b',    // Red
-            2: '#48dbfb',    // Cyan
-            gradient: 'linear-gradient(to right, #ff6b6b, #48dbfb)',
+        // Light Mode
+        light: {
+          primary: '#fdfdfd',
+          text: '#1e293b',
+          accent: {
+            DEFAULT: '#ff007a',
+            secondary: '#00b4d8',
           },
-          // Accent colors - dark theme
-          dark: {
-            1: '#ff9e5e',    // Orange
-            2: '#6c5ce7',    // Purple
-            gradient: 'linear-gradient(to right, #ff9e5e, #6c5ce7)',
+          card: {
+            bg: '#ffffff',
+            border: '#475569',
+          },
+          flipped: {
+            bg: '#fffae6',       // Light yellow background
+            text: '#ff007a',     // Pink text
+            border: '#ffd700'    // Gold border
+          },
+          button: {
+            primary: '#ff007a',
+            secondary: '#00b4d8',
+            text: '#ffffff',
           }
         },
-        
-        // Card colors
-        card: {
-          light: {
-            bg: '#ffffff',
-            border: '#48dbfb',
+        // Dark Mode
+        dark: {
+          primary: '#111827',
+          text: '#f3f4f6',
+          accent: {
+            DEFAULT: '#3b82f6',
+            secondary: '#10b981',
           },
-          dark: {
-            bg: '#1e1e1e',
-            border: '#6c5ce7',
+          card: {
+            bg: '#1f2937',
+            border: '#374151',
+          },
+          flipped: {
+            bg: '#1a1a2e',       // Dark navy background
+            text: '#a5b4fc',     // Light lavender text
+            border: '#6366f1'    // Indigo border
+          },
+          button: {
+            primary: '#3b82f6',
+            secondary: '#10b981',
+            text: '#ffffff',
           }
         }
+      },
+      boxShadow: {
+        'button': '0 2px 4px rgba(0, 0, 0, 0.1)',
+        'button-hover': '0 4px 6px rgba(0, 0, 0, 0.1)'
       },
       animation: {
         'neon-pulse': 'neonPulse 2s ease-in-out infinite',
@@ -53,7 +68,8 @@ export default {
         'sleek-glow': 'sleekGlow 2s ease-in-out infinite',
         'cta-glow': 'ctaGlow 2s ease-in-out infinite',
         'new-item-glow': 'newItemGlow 2s ease-in-out infinite',
-      },
+    },
+      
       keyframes: {
         neonPulse: {
           '0%, 100%': { opacity: '0.5', filter: 'brightness(1) blur(8px)' },

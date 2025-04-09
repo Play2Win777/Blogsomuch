@@ -1,13 +1,8 @@
 /* styles.css */
-:root {
-  /* Light Mode - Tropical Sunrise */
-  --bg-primary: #f0f7f4;         /* Fresh morning mist */
-  --text-primary: #1a2e35;       /* Deep jungle green */
-  --accent-primary: #e74c3c;     /* Vibrant parrot red */
-  --accent-secondary: #3498db;   /* Caribbean blue */
-  --card-bg: #ffffff;            /* Pure white */
-  --card-border: #2ecc71;        /* Rainforest green */
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
   /* Card flip animations */
 .transform-style-preserve-3d {
     transform-style: preserve-3d;
@@ -19,6 +14,9 @@
   
   .card-face {
     backface-visibility: hidden;
+    height: 100%; /* Ensure it always tries to fill the parent height */
+    box-sizing: border-box;
+    
   }
   
   /* Typewriter cursor effect */
@@ -41,28 +39,15 @@
     from, to { opacity: 1; }
     50% { opacity: 0; }
   }
-  
-  [data-theme="dark"] {
-    --bg-primary: #121212;
-    --text-primary: #e2e8f0;
-    --accent-primary: #ff9e5e;
-    --accent-secondary: #6c5ce7;
-    --card-bg: #1e1e1e;
-    --card-border: #6c5ce7;
+  @keyframes shine {
+    from { background-position: 0% center; }
+    to { background-position: 200% center; }
   }
   
-  .blog-container {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    transition: background-color 0.3s, color 0.3s;
+  .animate-shine {
+    animation: shine 3s ease-in-out infinite alternate;
   }
-  
-  .progress-bar {
+    .progress-bar {
     position: fixed;
     top: 0;
     left: 0;
@@ -73,7 +58,7 @@
   
   .sidebar {
     position: fixed;
-    right: 2rem;
+    right: 0rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -363,4 +348,19 @@
   @keyframes blink {
     from, to { opacity: 1; }
     50% { opacity: 0; }
+  }
+  @keyframes sportGlow {
+    0%, 100% {
+      box-shadow: 0 0 7px rgba(0, 255, 255, 0.6),
+                  0 0 11px rgba(0, 255, 0, 0.5),
+                  0 0 15px rgba(0, 191, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 14px rgba(0, 255, 255, 0.9),
+                  0 0 18px rgba(0, 255, 0, 0.8),
+                  0 0 22px rgba(0, 191, 255, 0.7);
+    }
+  }
+  .animate-sportGlow {
+    animation: sportGlow 2s ease-in-out infinite;
   }

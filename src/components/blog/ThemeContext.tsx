@@ -1,5 +1,4 @@
-// src/components/blog/ThemeContext.tsx
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useSettingsStore } from '../../store';
 
 interface ThemeContextType {
@@ -15,9 +14,15 @@ const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { theme, toggleTheme } = useSettingsStore();
   
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <div className="bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text min-h-screen">
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };

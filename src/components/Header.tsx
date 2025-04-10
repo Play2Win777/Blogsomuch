@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaCog } from 'react-icons/fa';
 import FocusTrap from 'focus-trap-react';
 import { useSettingsStore } from '../store';
 
@@ -43,11 +42,13 @@ export const Header: React.FC = () => {
     seed,
     setSeed,
   } = useSettingsStore();
-
+  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [largeCellInput, setLargeCellInput] = React.useState(customLargeCellIndices.join(', '));
   const [infoCellInput, setInfoCellInput] = React.useState(customInfoCellIndices.join(', '));
-
+  
+  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -72,30 +73,83 @@ export const Header: React.FC = () => {
   return (
     <header className="p-4 bg-light-card-bg border-b border-light-accent-secondary dark:bg-dark-card-bg dark:border-dark-accent-secondary">
       <nav className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text:base md:text-xl font-bold text-light-text dark:text-dark-text">
+      <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </button>
+
+        {/* Mobile menu flyout */}
+        {mobileMenuOpen && (
+          <div className="absolute left-0 top-16 w-full bg-light-card-bg dark:bg-dark-card-bg shadow-lg z-40 border-t border-light-accent-secondary dark:border-dark-accent-secondary">
+            <div className="flex flex-col space-y-2 p-4">
+              <Link 
+                to="/" 
+                className="px-4 py-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/bikes" 
+                className="px-4 py-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Bikes
+              </Link>
+              <Link 
+                to="/accessories" 
+                className="px-4 py-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colorspx-4 py-2 hover:bg-light-accent-secondary/20 dark:hover:bg-dark-accent-secondary/20 rounded-md"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Accessories
+              </Link>
+              <Link 
+                to="/blog" 
+                className="px-4 py-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Blog
+              </Link>
+            </div>
+          </div>
+        )}
+        <div className="text-xl font-bold text-light-text dark:text-dark-text mx-4">
           My Store
         </div>
-        <div className="flex items-center space-x-4">
-          <Link to="/" className="text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent">
-            Home
-          </Link>
-          <Link to="/bikes" className="text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent">
-            Bikes
-          </Link>
-          <Link to="/accessories" className="text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent">
-            Accessories
-          </Link>
-          <Link to="/blog" className="text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent">
-            Blog
-          </Link>
+        {/* Right side icons */}
+        <div className="flex items-center space-x-2">
+          {/* Lightbulb theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
+            aria-label="Toggle theme"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+              <path d="M12 4v1M18 6l-1 1M20 12h-1M18 18l-1-1M12 19v1M7 17l-1 1M5 12H4M7 7l1-1"></path>
+            </svg>
+          </button>
+
+          {/* Beaker settings button */}
           <button
             onClick={openModal}
-            className="text-light-text hover:text-light-accent dark:text-dark-text dark:hover:text-dark-accent focus:outline-none"
+            className="p-2 rounded-md text-light-text hover:bg-light-accent-secondary/20 hover:text-light-accent dark:text-dark-text dark:hover:bg-dark-accent-secondary/20 dark:hover:text-dark-accent transition-colors"
             aria-label="Open settings"
           >
-            <FaCog className="w-6 h-6" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
           </button>
         </div>
+          
       </nav>
 
       {/* Settings Modal - Fully Restored */}

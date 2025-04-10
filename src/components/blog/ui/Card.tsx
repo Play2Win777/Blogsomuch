@@ -92,7 +92,8 @@ export const Card = ({
           // No hover sound here; click triggers modal sound via useEffect
         }}
       >
-        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col `}>
+        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col border-2 border-purple-500`}>
+        <div className="h-full flex flex-col border-2 border-yellow-500">
           <h3 className="text-lg font-bold -mb-2">{title}</h3>
           {image && (
             <div className="w-full h-40 mb-2 rounded overflow-hidden">
@@ -100,6 +101,7 @@ export const Card = ({
             </div>
           )}
           <p className="text-sm">{content.substring(0, 100)}...</p>
+        </div>
         </div>
       </div>
 

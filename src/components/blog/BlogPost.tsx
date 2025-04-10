@@ -6,6 +6,8 @@ import { Typewriter } from './ui/Typewriter';
 import { TapToReveal } from './ui/TapToReveal';
 import { useRewardCheck } from "../../hooks/useRewardCheck";
 import '../../styles/blog.css';
+import { Helmet } from 'react-helmet';
+
 
 export const BlogPost = ({ slug }: { slug: string }) => {
   const { theme, toggleTheme } = useTheme();
@@ -13,8 +15,8 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showRadialMenu, setShowRadialMenu] = useState(false);
-  const [clickedCards, setClickedCards] = useState<string[]>([]); // Track clicked cards
-  const [openCardId, setOpenCardId] = useState<string | null>(null); // Track open modal
+  const [clickedCards, setClickedCards] = useState<string[]>([]); 
+  const [openCardId, setOpenCardId] = useState<string | null>(null); 
   const [timeOnPage, setTimeOnPage] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -141,6 +143,47 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   ];
   
   return (
+    <>
+      <Helmet>
+        <title>The Hidden Challenges of Measuring Search Trends in Suriname</title>
+        <meta name="description" content="Discover why tracking digital behavior in Suriname presents unique challenges for businesses and researchers." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Social Meta Tags */}
+        <meta property="og:title" content="The Hidden Challenges of Measuring Search Trends in Suriname" />
+        <meta property="og:description" content="Discover why tracking digital behavior in Suriname presents unique challenges for businesses and researchers." />
+        <meta property="og:image" content="https://bloggingtrial.vercel.app/images/suriname-digital-landscape.webp" />
+        <meta property="og:url" content={`https://bloggingtrial.vercel.app/blog${slug}`} />
+        <meta property="og:type" content="article" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="The Hidden Challenges of Measuring Search Trends in Suriname" />
+        <meta name="twitter:description" content="Discover why tracking digital behavior in Suriname presents unique challenges for businesses and researchers." />
+        <meta name="twitter:image" content="https://bloggingtrial.vercel.app/images/suriname-digital-landscape.webp" />
+        <meta name="twitter:image:alt" content="Generated image depicting the inner city of Paramaribo, Suriname." />
+        
+        <link rel="canonical" href={`https://bloggingtrial.vercel.app/blog${slug}`} />
+        
+        {/* Schema.org markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "The Hidden Challenges of Measuring Search Trends in Suriname",
+            "description": "Discover why tracking digital behavior in Suriname presents unique challenges for businesses and researchers.",
+            "author": {
+              "@type": "Person",
+              "name": "John Christopher",
+              "url": "https://www.linkedin.com/in/john-christopher-0050616a/",
+              "sameAs": [
+                "https://www.linkedin.com/in/john-christopher-0050616a/"
+              ]
+            },
+            "datePublished": "2025-04-10",
+            "image": "https://bloggingtrial.vercel.app/images/suriname-digital-landscape.webp"
+          })}
+        </script>
+      </Helmet>
     <div className="min-h-screen border- overflow-x-hidden overflow-y-hidden">
     <div 
       ref={contentRef}
@@ -224,9 +267,20 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         <header className="mb-12">
         <img 
             src="/images/suriname-digital-landscape.webp"
-            alt="8-bit pixel art of a map of Suriname with search icons and question marks floating above it" 
+            alt="Generated image depicting the inner city of Paramaribo, Suriname." 
             className="w-full rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary"
           />
+          <div className="flex items-center mt-4 mb-6">
+              <img 
+                src="/images/auth_jc.webp"
+                alt="John Christopher"
+                className="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+                <p className="font-small">John Christopher</p>
+                <p className="text-xs opacity-80">Junior web developer, Freelance marketer</p>
+              </div>
+            </div>
           <h1 className="text-4xl font-bold mb-4">The Hidden Challenges of Measuring Search Trends in <span className="text-transparent bg-clip-text bg-gradient-to-r from-light-accent to-light-accent-secondary dark:from-dark-accent dark:to-dark-accent-secondary bg-[length:220%_auto] animate-shine">Suriname</span></h1>
           <p className="text-xl mb-6">Discover why tracking digital behavior in Suriname presents unique challenges and what this means for businesses and researchers looking to understand this unique South American market.</p>
           <div className="flex gap-2 text-sm mb-6">
@@ -235,8 +289,9 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             </span>
             <span>•</span>
             <span>5 min read</span>
+            <span>•</span>
+            <span>Updated: April 10, 2024</span>
           </div>
-          
         </header>
 
         {/* Auto-generated TOC */}
@@ -285,7 +340,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           <h2 className="text-2xl font-bold mb-6">The Digital Landscape of Suriname</h2>
           <p className="mb-4">Before we can understand why measuring search trends in Suriname is difficult, we need to establish some context about the nation's digital landscape.</p>
           <p className="mb-4">Suriname, formerly known as Dutch Guiana, gained independence from the Netherlands in 1975. With a population of approximately 600,000 people, it's one of the least populated countries in South America. However, its unique position as a Dutch-speaking nation with strong Caribbean, South American, and European influences makes it culturally significant.</p>
-          <p className="mb-4">Digital adoption in Suriname has grown steadily over the past decade. Internet penetration has increased from around 32% in 2010 to approximately 60% in recent years—a significant improvement, but still well below the rates seen in more developed nations.</p>
+          <p className="mb-4">Digital adoption in Suriname has grown steadily over the past decade. Internet penetration has increased from around 32% in 2010 to approximately 60% in recent years <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx" className="text-light-accent dark:text-dark-accent hover:underline" target="_blank" rel="noopener noreferrer">(ITU, 2023)</a>—a significant improvement, but still well below the rates seen in more developed nations.</p>
           <p className="font-bold">The primary challenge begins with this fundamental reality: smaller data pools create less reliable analytics.</p>
         </section>
 
@@ -335,27 +390,125 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           </p>
         </section>
 
-        {/* Related posts */}
-        <section className="mb-16">
-          <h3 className="text-xl font-bold mb-6">Related Posts</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {relatedPosts.map(post => (
-              <div 
-                key={post.id}
-                className="p-6 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg"
-              >
-                <h4 className="font-bold mb-2">{post.title}</h4>
-                <p className="text-sm mb-4">{post.excerpt}</p>
-                <button 
-                  className="px-4 py-2 rounded-full text-sm font-medium bg-light-button-secondary text-light-button-text hover:bg-opacity-90 dark:bg-dark-button-secondary dark:text-dark-button-text dark:hover:bg-opacity-90 transition-colors shadow-button hover:shadow-button-hover"
-                >
-                  Read More
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* Related posts - Final Version with Debugging */}
+<section className="mb-16 relative">
+  <h3 className="text-xl font-bold mb-6 border-l-4 border-red-500 pl-2">Continue Reading</h3>
+  
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 border-2 border-green-500 border-dashed"> 
+    {/* Card 1 */}
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+      {/* Card Background */}
+      <img
+        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
+        alt="Network background"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
+      />
+      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+        <h4 className="font-bold mb-1 text-sm">Why Suriname Needs More Local Content Online</h4>
+        <p className="text-xs mb-2 flex-grow">
+          Exploring the content gap in Surinamese digital spaces.
+        </p>
+        <a 
+          href="#"
+          className="mt-auto px-2 py-1 rounded-full text-xs bg-light-button-secondary text-light-button-text dark:bg-dark-button-secondary dark:text-dark-button-text"
+        >
+          Read More
+        </a>
+      </div>
+    </div>
 
+    {/* Card 2 */}
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
+        alt="Coding background"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
+      />
+      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+        <h4 className="font-bold mb-1 text-sm">Suriname's Own Social Network?</h4>
+        <p className="text-xs mb-2 flex-grow">
+          Examining potential for local social media platform.
+        </p>
+        <a 
+          href="#"
+          className="mt-auto px-2 py-1 rounded-full text-xs bg-light-button-secondary text-light-button-text dark:bg-dark-button-secondary dark:text-dark-button-text"
+        >
+          Read More
+        </a>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
+        alt="Payment tech background"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
+      />
+      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+        <h4 className="font-bold mb-1 text-sm">Local Payment Gateways</h4>
+        <p className="text-xs mb-2 flex-grow">
+          Challenges in Suriname's digital payment landscape.
+        </p>
+        <a 
+          href="#"
+          className="mt-auto px-2 py-1 rounded-full text-xs bg-light-button-secondary text-light-button-text dark:bg-dark-button-secondary dark:text-dark-button-text"
+        >
+          Read More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+        {/* Research Sources Section - Updated */}
+<section className="mb-16 p-3 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg border-l-4 border-purple-500">
+  <div className="border-2 border-purple-500 p-2"> 
+    <h3 className="text-xl font-bold mb-2">Research Sources</h3> 
+    <ul className="space-y-1 text-sm"> 
+      <li>• World Bank. (2023). Suriname Overview. https://www.worldbank.org/en/country/suriname/overview</li>
+      <li>• International Telecommunication Union. (2023). Digital Trends in Small Markets.</li>
+      <li>• Suriname Ministry of Economic Affairs. (2022). Technology Infrastructure Report.</li>
+      <li>• Central Bank of Suriname. (2023). Digital Payment Adoption Study.</li>
+    </ul>
+    <div className="mt-2 p-2 bg-light-card-bg dark:bg-dark-card-bg rounded-lg text-sm border-t border-purple-500"> 
+      <p className="italic">
+        <strong>Disclosure:</strong> This article was created with ai assisted research and curated by me.
+      </p>
+    </div>
+  </div>
+</section>
+
+{/* Author Bio - Updated */}
+<section className="mb-16 p-3 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg border-l-4 border-purple-500">
+  <div className="border-2 border-purple-500 p-2">
+    
+    <div className="flex items-start">
+      <img 
+        src="/images/auth_jc.webp"
+        alt="John Christopher"
+        className="w-12 h-12 rounded-full mr-3"  
+      />
+      <div>
+        <h3 className="text-lg font-bold mb-1">About the Author</h3>
+        <p className="mb-1 text-sm">
+         
+          John Christopher is a Surinamese born native, lover of languages and technology. Fluent in English, Dutch, and Portuguese.
+        </p>
+        <a 
+          href="https://www.linkedin.com/in/john-christopher-0050616a/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-light-accent dark:text-dark-accent hover:underline inline-flex items-center text-sm"
+        >
+          Connect on LinkedIn
+          <svg className="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
         {/* Endless word loop */}
         <div className="overflow-hidden whitespace-nowrap py-4 border-t-2 border-b-2 border-dashed border-light-accent-secondary dark:border-dark-accent-secondary">
           <span className="inline-block pl-[100%] animate-scroll">
@@ -363,7 +516,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           </span>
         </div>
       </article>
-
+      
       {/* Confetti effect */}
       {showConfetti && (
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-50">
@@ -389,5 +542,6 @@ export const BlogPost = ({ slug }: { slug: string }) => {
       )}
     </div>
     </div>
-  );
+  </>
+);
 };

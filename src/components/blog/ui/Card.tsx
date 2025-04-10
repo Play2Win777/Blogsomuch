@@ -92,11 +92,11 @@ export const Card = ({
           // No hover sound here; click triggers modal sound via useEffect
         }}
       >
-        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col p-4`}>
-          <h3 className="text-lg font-bold mb-2">{title}</h3>
+        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col `}>
+          <h3 className="text-lg font-bold -mb-2">{title}</h3>
           {image && (
-            <div className="relative w-full h-32 mb-2 rounded overflow-hidden">
-              <img src={image} alt={title} className="absolute w-full h-full object-cover" />
+            <div className="w-full h-40 mb-2 rounded overflow-hidden">
+              <img src={image} alt={title} className="w-full h-full object-cover" />
             </div>
           )}
           <p className="text-sm">{content.substring(0, 100)}...</p>
@@ -109,8 +109,8 @@ export const Card = ({
           <div className="relative w-full max-w-4xl h-[90vh] bg-white dark:bg-gray-800 rounded-lg p-6 overflow-y-auto">
             <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">{title}</h3>
             {image && (
-              <div className="relative w-full h-48 mb-4 rounded overflow-hidden">
-                <img src={image} alt={title} className="absolute w-full h-full object-cover" />
+              <div className="w-full h-48 mb-4 rounded overflow-hidden">
+                <img src={image} alt={title} className=" w-full h-full object-cover" />
               </div>
             )}
             <div className="prose prose-sm dark:prose-invert text-gray-800 dark:text-gray-100">

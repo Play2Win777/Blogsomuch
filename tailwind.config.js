@@ -4,9 +4,6 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
-      fontSize: {
-        base: '140%', // Sets base font-size to 40% larger
-      },
       colors: {
         // Light Mode
         light: {

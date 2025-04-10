@@ -143,7 +143,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   return (
     <div 
       ref={contentRef}
-      className={`min-h-screen p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text`}
+      className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text overflow-x-hidden`}
     >
       {/* Progress bar */}
       <div 
@@ -289,9 +289,9 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         </section>
 
         {/* Card grid section */}
-      <section id="key-challenges" className="mb-16 -mx-6 -px-3">
-        <h2 className="text-2xl font-bold mb-8 mx-6">Key Challenges Visualized</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <section id="key-challenges" className="mb-16 px-0 md:-mx-6">
+        <h2 className="text-2xl font-bold mb-8 px-4 md:px-6">Key Challenges Visualized</h2>
+        <div className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 md:gap-2 md:px-0">
           {cardData.map((card, index) => (
             <div
               key={card.id}>

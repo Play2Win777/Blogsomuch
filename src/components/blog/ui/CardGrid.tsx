@@ -44,9 +44,9 @@ export const CardGrid = ({ title, cards }: CardGridProps) => {
   };
 
   return (
-    <section id="key-challenges" className="mb-16">
-      <h2 className="text-2xl font-bold mb-8">{title}</h2>
-      <div className="grid grid-cols-2 gap-2 auto-rows-[16rem]">
+    <section id="key-challenges" className="mb-16 px-0 md:-mx-6">
+      <h2 className="text-2xl font-bold mb-8 px-4 md:px-6">{title}</h2>
+      <div className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 md:gap-2 md:px-0">
         {cards.map((card, index) => (
           <div key={card.id}>
             <Card

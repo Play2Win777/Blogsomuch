@@ -81,7 +81,7 @@ export const Card = ({
           themeClasses[theme].border
         } cursor-pointer transition-transform duration-300 ${
           !isClicked ? "animate-sportGlow" : ""
-        } ${isHovered ? "scale-105" : "scale-100"}`}
+        } ${isHovered ? "scale-105 z-10" : "scale-100 z-0"}`}
         onMouseEnter={() => {
           setIsHovered(true);
           playSound("hover"); // Trigger on hover (user gesture)

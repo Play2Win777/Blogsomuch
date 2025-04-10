@@ -141,10 +141,10 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   ];
 
   return (
+    <div className="min-h-screen border-2 border-red-500 overflow-x-hidden overflow-y-hidden">
     <div 
       ref={contentRef}
-      className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text 
-        overflow-x-hidden overflow-y-hidden`}
+      className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text`}
     >
       {/* Progress bar */}
       <div 
@@ -164,7 +164,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
       {/* Floating sidebar */}
       {showSidebar && (
-        <div className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-40">
+        <div className="fixed right-2 md:right-1 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-40">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg"
@@ -290,9 +290,9 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         </section>
 
         {/* Card grid section */}
-      <section id="key-challenges" className="mb-16 px-0 md:-mx-6">
-        <h2 className="text-2xl font-bold mb-8 px-4 md:px-6">Key Challenges Visualized</h2>
-        <div className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2 md:gap-2 md:px-0">
+      <section id="key-challenges" className="mb-16">
+        <h2 className="text-2xl font-bold mb-8">Key Challenges Visualized</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2">
           {cardData.map((card, index) => (
             <div
               key={card.id}>
@@ -387,6 +387,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

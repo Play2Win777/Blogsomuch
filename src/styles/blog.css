@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-size: 140%; /* 40% larger than browser default (normally 16px) */
+  }
+}
+
   /* Card flip animations */
 .transform-style-preserve-3d {
     transform-style: preserve-3d;

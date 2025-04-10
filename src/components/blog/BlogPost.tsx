@@ -221,6 +221,11 @@ export const BlogPost = ({ slug }: { slug: string }) => {
       {/* Blog content */}
       <article className="max-w-7xl mx-auto">
         <header className="mb-12">
+        <img 
+            src="/images/suriname-digital-landscape.webp"
+            alt="8-bit pixel art of a map of Suriname with search icons and question marks floating above it" 
+            className="w-full rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary"
+          />
           <h1 className="text-4xl font-bold mb-4">The Hidden Challenges of Measuring Search Trends in <span className="text-transparent bg-clip-text bg-gradient-to-r from-light-accent to-light-accent-secondary dark:from-dark-accent dark:to-dark-accent-secondary bg-[length:220%_auto] animate-shine">Suriname</span></h1>
           <p className="text-xl mb-6">Discover why tracking digital behavior in Suriname presents unique challenges and what this means for businesses and researchers looking to understand this unique South American market.</p>
           <div className="flex gap-2 text-sm mb-6">
@@ -230,11 +235,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             <span>•</span>
             <span>5 min read</span>
           </div>
-          <img 
-            src="/images/suriname-digital-landscape.webp"
-            alt="8-bit pixel art of a map of Suriname with search icons and question marks floating above it" 
-            className="w-full rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary"
-          />
+          
         </header>
 
         {/* Auto-generated TOC */}

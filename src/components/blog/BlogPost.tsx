@@ -139,9 +139,9 @@ export const BlogPost = ({ slug }: { slug: string }) => {
     { id: "card5", title: "Technical Issues", content: "IP geolocation inaccuracies and VPN usage distort data.", image: "/images/distorteddata.webp" },
     { id: "card6", title: "Infrastructure Gaps", content: "Limited broadband in rural areas creates 'digital shadows' where behavior goes unmeasured.", image: "/images/rural2.webp" }
   ];
-
+  
   return (
-    <div className="min-h-screen border-2 border-red-500 overflow-x-hidden overflow-y-hidden">
+    <div className="min-h-screen border- overflow-x-hidden overflow-y-hidden">
     <div 
       ref={contentRef}
       className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text`}

@@ -392,18 +392,18 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
         {/* Related posts - Final Version with Debugging */}
 <section className="mb-16 relative">
-  <h3 className="text-xl font-bold mb-6 border-l-4 border-red-500 pl-2">Continue Reading</h3>
+  <h3 className="text-xl font-bold mb-6">Continue Reading</h3>
   
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 border-2 border-green-500 border-dashed"> 
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-3"> 
     {/* Card 1 */}
-    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden min-h-48">
       {/* Card Background */}
       <img
         src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
         alt="Network background"
         className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
       />
-      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+      <div className="relative z-10 h-full flex flex-col py-3 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
         <h4 className="font-bold mb-1 text-sm">Why Suriname Needs More Local Content Online</h4>
         <p className="text-xs mb-2 flex-grow">
           Exploring the content gap in Surinamese digital spaces.
@@ -418,13 +418,13 @@ export const BlogPost = ({ slug }: { slug: string }) => {
     </div>
 
     {/* Card 2 */}
-    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden min-h-48">
       <img
         src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
         alt="Coding background"
         className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
       />
-      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+      <div className="relative z-10 h-full flex flex-col py-3 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
         <h4 className="font-bold mb-1 text-sm">Suriname's Own Social Network?</h4>
         <p className="text-xs mb-2 flex-grow">
           Examining potential for local social media platform.
@@ -439,13 +439,13 @@ export const BlogPost = ({ slug }: { slug: string }) => {
     </div>
 
     {/* Card 3 */}
-    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden">
+    <div className="relative p-3 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary overflow-hidden min-h-48">
       <img
         src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600"
         alt="Payment tech background"
         className="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
       />
-      <div className="relative z-10 h-full flex flex-col border-2 border-purple-500 py-2 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
+      <div className="relative z-10 h-full flex flex-col py-3 bg-light-card-bg/70 dark:bg-dark-card-bg/70">
         <h4 className="font-bold mb-1 text-sm">Local Payment Gateways</h4>
         <p className="text-xs mb-2 flex-grow">
           Challenges in Suriname's digital payment landscape.
@@ -462,7 +462,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 </section>
         {/* Research Sources Section - Updated */}
 <section className="mb-16 p-3 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg border-l-4 border-purple-500">
-  <div className="border-2 border-purple-500 p-2"> 
+  <div className="py-2"> 
     <h3 className="text-xl font-bold mb-2">Research Sources</h3> 
     <ul className="space-y-1 text-sm"> 
       <li>• World Bank. (2023). Suriname Overview. https://www.worldbank.org/en/country/suriname/overview</li>
@@ -470,7 +470,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
       <li>• Suriname Ministry of Economic Affairs. (2022). Technology Infrastructure Report.</li>
       <li>• Central Bank of Suriname. (2023). Digital Payment Adoption Study.</li>
     </ul>
-    <div className="mt-2 p-2 bg-light-card-bg dark:bg-dark-card-bg rounded-lg text-sm border-t border-purple-500"> 
+    <div className="mt-2 p-2 bg-light-card-bg dark:bg-dark-card-bg rounded-lg text-xs opacity-55 border-t border-purple-500"> 
       <p className="italic">
         <strong>Disclosure:</strong> This article was created with ai assisted research and curated by me.
       </p>
@@ -480,7 +480,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
 {/* Author Bio - Updated */}
 <section className="mb-16 p-3 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg border-l-4 border-purple-500">
-  <div className="border-2 border-purple-500 p-2">
+  <div className="py-2">
     
     <div className="flex items-start">
       <img 

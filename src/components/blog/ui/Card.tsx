@@ -49,15 +49,15 @@ export const Card = ({
     gainNode.connect(audioContext.destination);
 
     if (type === "hover") {
-      oscillator.frequency.value = 600; // Subtle hover sound
+      oscillator.frequency.value = 600;
       gainNode.gain.value = 0.1;
       oscillator.type = "sine";
     } else if (type === "modal") {
-      oscillator.frequency.value = 400; // Achievement tone
+      oscillator.frequency.value = 400;
       gainNode.gain.value = 0.15;
       oscillator.type = "triangle";
     } else if (type === "close") {
-      oscillator.frequency.value = 300; // Subtle close sound
+      oscillator.frequency.value = 300;
       gainNode.gain.value = 0.1;
       oscillator.type = "square";
     }
@@ -84,25 +84,22 @@ export const Card = ({
         } ${isHovered ? "scale-105 z-10" : "scale-100 z-0"}`}
         onMouseEnter={() => {
           setIsHovered(true);
-          playSound("hover"); // Trigger on hover (user gesture)
+          playSound("hover");
         }}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => {
           handleClick();
-          // No hover sound here; click triggers modal sound via useEffect
         }}
       >
-        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col border-2 border-purple-500`}>
-        <div className="h-full flex flex-col border-2 border-yellow-500">
-          <h3 className="text-lg font-bold -mb-2">{title}</h3>
-          {image && (
-            <div className="w-full h-40 mb-2 rounded overflow-hidden">
-              <img src={image} alt={title} className="w-full h-full object-cover" />
-            </div>
-          )}
-          <p className="text-sm">{content.substring(0, 100)}...</p>
-        </div>
-        </div>
+        <div className={`w-full h-full ${themeClasses[theme].text} flex flex-col`}>
+                      <h3 className="text-lg font-bold -mb-2">{title}</h3>
+            {image && (
+              <div className="w-full h-40 mb-2 rounded overflow-hidden">
+                <img src={image} alt={title} className="w-full h-full object-cover" />
+              </div>
+            )}
+            <p className="text-sm">{content.substring(0, 100)}...</p>
+                  </div>
       </div>
 
       {/* Modal */}
@@ -112,7 +109,7 @@ export const Card = ({
             <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">{title}</h3>
             {image && (
               <div className="w-full h-48 mb-4 rounded overflow-hidden">
-                <img src={image} alt={title} className=" w-full h-full object-cover" />
+                <img src={image} alt={title} className="w-full h-full object-cover" />
               </div>
             )}
             <div className="prose prose-sm dark:prose-invert text-gray-800 dark:text-gray-100">

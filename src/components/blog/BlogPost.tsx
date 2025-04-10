@@ -291,7 +291,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         {/* Card grid section */}
       <section id="key-challenges" className="mb-16 -mx-6 -px-3">
         <h2 className="text-2xl font-bold mb-8 mx-6">Key Challenges Visualized</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {cardData.map((card, index) => (
             <div
               key={card.id}>

@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
   return (
     <header className="p-4 bg-light-card-bg border-b border-light-accent-secondary dark:bg-dark-card-bg dark:border-dark-accent-secondary">
       <nav className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text-lg md:text-xl font-bold text-light-text dark:text-dark-text">
+        <div className="text:base md:text-xl font-bold text-light-text dark:text-dark-text">
           My Store
         </div>
         <div className="flex items-center space-x-4">

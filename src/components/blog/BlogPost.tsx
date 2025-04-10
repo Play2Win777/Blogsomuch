@@ -143,7 +143,8 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   return (
     <div 
       ref={contentRef}
-      className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text overflow-x-hidden`}
+      className={`min-h-screen p-4 md:p-8 max-w-6xl mx-auto relative bg-light-primary text-light-text dark:bg-dark-primary dark:text-dark-text 
+        overflow-x-hidden overflow-y-hidden`}
     >
       {/* Progress bar */}
       <div 
@@ -163,7 +164,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
       {/* Floating sidebar */}
       {showSidebar && (
-        <div className="fixed right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-40">
+        <div className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 z-40">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg"

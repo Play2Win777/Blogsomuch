@@ -281,17 +281,17 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             <span>•</span>
             <span>Updated: April 10, 2024</span>
           </div>
-          <div className="flex items-center mt-4 mb-6">
+          <div className="flex items-center mt-4 mb-3">
               <img 
                 src="/images/auth_jc.webp"
                 alt="John Christopher"
                 className="w-12 h-12 rounded-full mr-4"
               />
               <div>
-              <p className="text-sm font-medium text-light-text dark:text-dark-text">
+              <p className="text-sm font-medium text-light-text dark:text-dark-text opacity-75">
                 John Christopher
               </p>
-            <p className="text-xs text-light-text/80 dark:text-dark-text/70 leading-tight">
+            <p className="text-xs text-light-text/80 dark:text-dark-text/70 leading-tight opacity-45">
                Entrepreneur · Marketing Technologist · Polyglot
               </p>
               </div>

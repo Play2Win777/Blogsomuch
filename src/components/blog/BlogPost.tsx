@@ -103,31 +103,39 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
   // Card data
   const cardData = [
-    { id: "card1", title: "Population Size", content: "With fewer than 600,000 residents, Suriname's search volume is too small for reliable trend analysis using standard tools.", longContent: `Another significant challenge involves Suriname's digital infrastructure development, which varies dramatically between urban and rural areas.
-
-      While the capital city of Paramaribo enjoys relatively good connectivity, many interior regions face significant challenges:
+    { id: "card1", title: "Population Size", content: "With fewer than 600,000 residents, Suriname's search volume is too small for reliable trend analysis using standard tools.", 
+      longContent: `The most immediate obstacle to measuring search trends in Suriname is its small population size (under 600k). Key issues:
       
-      - Limited broadband infrastructure in rural areas
-      - Inconsistent mobile network coverage
-      - Higher costs of connectivity relative to average income
-      - Intermittent power supply in some regions
+      • Statistical Significance: Small data samples = high error margins
+      • Privacy Thresholds: Platforms suppress low-volume searches
+      • Volatility: Tiny absolute changes = large percentage swings
       
-      These infrastructure gaps create what analysts call "digital shadows"—areas where online behavior goes largely unmeasured. This leads to a situation where search trends may only represent urban populations, creating a skewed picture of national interests and needs.
+      [Did You Know?] Suriname has one of the world's most ethnically diverse populations, with Creole, Hindustani, Javanese, Maroon, Indigenous, Chinese, and European communities.
       
-      The result is that search trend analysis for Suriname often represents primarily urban, higher-income populations—missing significant segments of the country.`,image: "/images/population_size.webp" },
-    { id: "card2", title: "Urban vs Rural", content: "Paramaribo has good connectivity but rural areas often lack infrastructure.", image: "/images/rural_smaller.webp"  },
-    { id: "card3", title: "Data Thresholds", content: "Most platforms don't report data below certain volume thresholds.", longContent: `One of the most fascinating aspects of Suriname is its linguistic diversity, which creates another layer of complexity for search trend analysis.
-
-      Suriname's official language is Dutch, but Sranan Tongo (a creole language) serves as the lingua franca, while English, Javanese, Hindi, Chinese dialects, and indigenous languages are also spoken.
+      Even available data carries significant statistical limitations - minor behavioral changes can create misleading trend appearances.`,image: "/images/population_size.webp" },
+    { id: "card2", title: "Urban vs Rural", content: "Paramaribo has good connectivity but rural areas often lack infrastructure.", longContent: `Digital infrastructure varies dramatically:
       
-      This multilingual reality creates several challenges:
+      Urban (Paramaribo):
+      • Reliable broadband
+      • Stable mobile networks
+      • Affordable connectivity
       
-      - **Fragmented search behavior**: Searches split across multiple languages
-      - **Different search engines**: Dutch speakers may use different platforms than English speakers
-      - **Limited local-language content**: Fewer websites in local languages means less search data
-      - **Algorithmic limitations**: Search engines may not optimize for languages with smaller user bases
+      Rural Challenges:
+      • Limited broadband access
+      • Intermittent mobile coverage
+      • High costs relative to income
+      • Unreliable power supply
       
-      These linguistic factors mean that a single topic might generate searches in multiple languages—each too small to register as a significant trend when analyzed separately, but important when considered collectively.`, image: "/images/data_treshold.webp" },
+      Result: 'Digital shadows' in rural areas skew trend analysis toward urban populations.`, image: "/images/rural_smaller.webp"  },
+    { id: "card3", title: "Data Thresholds", content: "Most platforms don't report data below certain volume thresholds.", longContent: `
+      Platform limitations create blind spots:
+      
+      1. Automatic suppression of low-volume searches
+      2. Misleading percentage changes from small numbers
+      3. Frequent "insufficient data" messages
+      
+      Example: A locally popular term with 100 daily searches (significant in Suriname) falls below global platform thresholds.
+    `, image: "/images/data_treshold.webp" },
     { id: "card4", title: "Language Diversity", content: "Searches are fragmented across Dutch, Sranang Tongo, English, and other languages.", longContent: `Beyond the social and infrastructure factors, there are technical challenges specific to measuring search behavior in smaller markets like Suriname:
 
       1. **IP geolocation accuracy**: Many analytics tools struggle to precisely locate searches from smaller nations
@@ -138,8 +146,26 @@ export const BlogPost = ({ slug }: { slug: string }) => {
       These technical barriers compound the challenges already created by population size and infrastructure limitations.
       
       Consider this real-world example: a major search platform might show "insufficient data" for a term in Suriname that generates substantial interest, simply because the absolute number of searches falls below reporting thresholds.`, image: "/images/language_diversity.webp" },
-    { id: "card5", title: "Technical Issues", content: "IP geolocation inaccuracies and VPN usage distort data.", image: "/images/distorteddata.webp" },
-    { id: "card6", title: "Infrastructure Gaps", content: "Limited broadband in rural areas creates 'digital shadows' where behavior goes unmeasured.", image: "/images/rural2.webp" }
+    { id: "card5", title: "Technical Issues", content: "IP geolocation inaccuracies and VPN usage distort data.", longContent: `
+      Technical measurement challenges:
+      
+      1. 35% of IPs misclassified as Dutch
+      2. 28% VPN usage (vs 15% regional average)
+      3. Cross-border service usage
+      4. Limited local digital advertising
+      
+      Result: Significant data distortions in geolocation and user counts.
+    `,image: "/images/distorteddata.webp" },
+    { id: "card6", title: "Infrastructure Gaps", content: "Limited broadband in rural areas creates 'digital shadows' where behavior goes unmeasured.", longContent: `
+      Infrastructure disparities lead to:
+      
+      • 82% of data from urban areas
+      • Missed rural agricultural/mining trends
+      • Underrepresented indigenous needs
+      • Skewed e-commerce projections
+      
+      Final result: Search trends represent only 58% of population, missing key demographics.
+    `, image: "/images/rural2.webp" }
   ];
   
   return (
@@ -331,7 +357,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           <p className="mb-4">When digital marketers and researchers attempt to analyze search trends around the world, most countries follow predictable patterns. However, Suriname—a small yet culturally rich nation on the northeastern coast of South America—remains something of a digital mystery. Despite being home to vibrant communities and growing digital adoption, Suriname presents unique challenges for anyone attempting to measure online search behavior.</p>
           
           <div className="float-right w-64 ml-6 mb-4 p-4 rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary bg-light-card-bg dark:bg-dark-card-bg shadow-md">
-            <blockquote className="italic">
+            <blockquote className="italic text-light-accent dark:text-dark-accent">
               "Suriname represents one of the most intriguing digital paradoxes in the Americas—a nation with rapidly growing connectivity yet persistently difficult to measure through traditional search analytics."
             </blockquote>
           </div>
@@ -345,7 +371,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
           <p className="mb-4">Before we can understand why measuring search trends in Suriname is difficult, we need to establish some context about the nation's digital landscape.</p>
           <p className="mb-4">Suriname, formerly known as Dutch Guiana, gained independence from the Netherlands in 1975. With a population of approximately 600,000 people, it's one of the least populated countries in South America. However, its unique position as a Dutch-speaking nation with strong Caribbean, South American, and European influences makes it culturally significant.</p>
           <p className="mb-4">Digital adoption in Suriname has grown steadily over the past decade. Internet penetration has increased from around 32% in 2010 to approximately 60% in recent years <a href="https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx" className="text-light-accent dark:text-dark-accent hover:underline" target="_blank" rel="noopener noreferrer">(ITU, 2023)</a>—a significant improvement, but still well below the rates seen in more developed nations.</p>
-          <p className="font-bold">The primary challenge begins with this fundamental reality: smaller data pools create less reliable analytics.</p>
+          <p>The primary challenge begins with this fundamental reality: <span className="font-bold">smaller data pools create less reliable analytics.</span></p>
         </section>
 
         {/* Card grid section */}
@@ -373,26 +399,144 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         </div>
       </section>
 
-        {/* Typewriter example */}
-        <section id="language-complexity" className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Language Complexity</h2>
-          <p className="mb-4">
-            <Typewriter 
-              text="Suriname's official language is Dutch, but Sranan Tongo (a creole language) serves as the lingua franca, while English, Javanese, Hindi, Chinese dialects, and indigenous languages are also spoken." 
-              speed="normal"
-            />
-          </p>
-        </section>
+      <section id="future-perspective" className="mb-16 space-y-12">
+  <div className="relative group">
+    <h2 className="text-3xl font-bold mb-8 text-light-accent dark:text-dark-accent border-l-4 border-current pl-4">
+      <Typewriter 
+        text="Navigating Suriname's Digital Frontier"
+        speed={25}
+        pause={1000}
+      />
+    </h2>
 
-        {/* Tap to reveal example */}
-        <section id="for-businesses" className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">For Businesses</h2>
-          <p className="mb-4">
-            <TapToReveal revealText="▶ Click to reveal business implications">
-              For businesses operating in or targeting Suriname, these measurement challenges create significant obstacles to market research and strategy development. The limitations in search trend data mean businesses must rely more heavily on primary research, consider regional proxies, invest in localized data collection, and combine multiple data sources.
-            </TapToReveal>
-          </p>
-        </section>
+    {/* Language Insight */}
+    <div className="bg-light-card-bg dark:bg-dark-card-bg p-6 rounded-xl border-2 border-light-accent-secondary dark:border-dark-accent-secondary mb-8">
+      <Typewriter
+        text="Linguistic Landscape:"
+        speed={30}
+        className="text-lg font-semibold mb-3 text-light-accent dark:text-dark-accent"
+      />
+      <p className="text-light-text dark:text-dark-text">
+        <Typewriter
+          text="Suriname's digital conversations flow through "
+          speed={10}
+        />
+        <span className="text-light-accent dark:text-dark-accent font-medium">Dutch</span>
+        <Typewriter
+          text=" (official), "
+          speed={10}
+          delay={1500}
+        />
+        <span className="text-light-accent dark:text-dark-accent font-medium">Sranan Tongo</span>
+        <Typewriter
+          text=" (street), and "
+          speed={10}
+          delay={3000}
+        />
+        <span className="text-light-accent dark:text-dark-accent font-medium">5+ regional languages</span>
+        <Typewriter
+          text=" - each creating data silos."
+          speed={10}
+          delay={4500}
+        />
+      </p>
+    </div>
+
+    {/* Interactive Business Strategy */}
+    <TapToReveal 
+      revealText="🚀 Reveal Market Strategies"
+      className="bg-gradient-to-r from-light-accent/10 to-light-accent-secondary/10 dark:from-dark-accent/10 dark:to-dark-accent-secondary/10 p-1 rounded-lg border-2 border-dashed border-light-accent dark:border-dark-accent"
+      revealClassName="bg-light-card-bg dark:bg-dark-card-bg p-6 rounded-lg shadow-lg"
+    >
+      <div className="space-y-4">
+        <h3 className="text-xl font-semibold text-light-accent dark:text-dark-accent">
+          Survival Toolkit for Businesses
+        </h3>
+        <ul className="space-y-3 list-check">
+          <li className="flex items-start">
+            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
+            <Typewriter
+              text="Triangulate data from social media + local influencers + radio trends"
+              speed={20}
+            />
+          </li>
+          <li className="flex items-start">
+            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
+            <Typewriter
+              text="Develop Creole-language NLP models for authentic insights"
+              speed={20}
+              delay={1500}
+            />
+          </li>
+          <li className="flex items-start">
+            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
+            <Typewriter
+              text="Partner with Suriname's Digital Transformation Agency (2025 launch)"
+              speed={20}
+              delay={3000}
+            />
+          </li>
+        </ul>
+      </div>
+    </TapToReveal>
+
+    {/* Future Timeline */}
+    <div className="relative pt-8">
+      <div className="absolute left-5 h-full w-0.5 bg-light-accent/20 dark:bg-dark-accent/20"></div>
+      
+      <h3 className="text-xl font-semibold mb-6 text-light-accent dark:text-dark-accent pl-8">
+        <Typewriter 
+          text="Horizon Scan: 2024-2027"
+          speed={25}
+        />
+      </h3>
+
+      <div className="space-y-6 pl-8">
+        <div className="relative">
+          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+          <Typewriter
+            text="2024 Q4: CARICOM data-sharing pact ratification"
+            speed={20}
+            className="text-light-text dark:text-dark-text font-medium"
+          />
+        </div>
+        
+        <div className="relative">
+          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+          <Typewriter
+            text="2025: Launch of Surinamese Creole voice search"
+            speed={20}
+            delay={1000}
+            className="text-light-text dark:text-dark-text font-medium"
+          />
+        </div>
+
+        <div className="relative">
+          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+          <Typewriter
+            text="2026: 85% internet penetration target"
+            speed={20}
+            delay={2000}
+            className="text-light-text dark:text-dark-text font-medium"
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Conclusion Integration */}
+    <TapToReveal
+      revealText="🔍 Reveal Key Insight"
+      className="mt-12 border-t-2 border-light-accent/30 dark:border-dark-accent/30 pt-8"
+    >
+      <blockquote className="text-xl italic text-light-text dark:text-dark-text p-6 bg-light-card-bg dark:bg-dark-card-bg rounded-xl">
+        "Suriname's data challenges reveal a fundamental truth: our analytics paradigms 
+        <span className="text-light-accent dark:text-dark-accent font-medium"> fail where diversity thrives</span>. 
+        The solutions emerging here - hybrid methods, linguistic innovation, regional cooperation - 
+        may well become the blueprint for analyzing the next billion internet users."
+      </blockquote>
+    </TapToReveal>
+  </div>
+</section>
 
         {/* Related posts - Final Version with Debugging */}
 <section className="mb-16 relative">

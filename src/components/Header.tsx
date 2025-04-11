@@ -71,7 +71,7 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="p-4 bg-light-card-bg border-b border-light-accent-secondary dark:bg-dark-card-bg dark:border-dark-accent-secondary">
+    <header className="px-3 py-1 bg-light-card-bg border-b border-light-accent-secondary dark:bg-dark-card-bg dark:border-dark-accent-secondary">
       <nav className="max-w-7xl mx-auto flex justify-between items-center">
       <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

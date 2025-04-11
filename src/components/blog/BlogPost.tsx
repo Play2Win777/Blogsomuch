@@ -469,7 +469,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   <div className="py-2"> 
     <h3 className="text-xl font-bold mb-2">Research Sources</h3> 
     <ul className="space-y-1 text-sm"> 
-      <li>• World Bank. (2023). Suriname Overview. https://www.worldbank.org/en/country/suriname/overview</li>
+      <li truncate>• World Bank. (2023). Suriname Overview. https://www.worldbank.org/en/country/suriname/overview</li>
       <li>• International Telecommunication Union. (2023). Digital Trends in Small Markets.</li>
       <li>• Suriname Ministry of Economic Affairs. (2022). Technology Infrastructure Report.</li>
       <li>• Central Bank of Suriname. (2023). Digital Payment Adoption Study.</li>

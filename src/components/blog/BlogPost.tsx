@@ -270,21 +270,10 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             alt="Generated image depicting the inner city of Paramaribo, Suriname." 
             className="w-full rounded-lg border-2 border-light-accent-secondary dark:border-dark-accent-secondary"
           />
-          <div className="flex items-center mt-4 mb-6">
-              <img 
-                src="/images/auth_jc.webp"
-                alt="John Christopher"
-                className="w-12 h-12 rounded-full mr-4"
-              />
-              <div>
-                <p className="font-small">John Christopher</p>
-                <p className="text-xs opacity-80">Junior web developer, Freelance marketer</p>
-              </div>
-            </div>
           <h1 className="text-4xl font-bold mb-4">The Hidden Challenges of Measuring Search Trends in <span className="text-transparent bg-clip-text bg-gradient-to-r from-light-accent to-light-accent-secondary dark:from-dark-accent dark:to-dark-accent-secondary bg-[length:220%_auto] animate-shine">Suriname</span></h1>
           <p className="text-xl mb-6">Discover why tracking digital behavior in Suriname presents unique challenges and what this means for businesses and researchers looking to understand this unique South American market.</p>
           <div className="flex gap-2 text-sm mb-6">
-            <span className="px-3 py-1 rounded-full bg-light-button-primary text-light-button-text dark:bg-dark-button-primary dark:text-dark-button-text font-medium shadow-button hover:shadow-button-hover">
+            <span className="px-3 py-1 rounded-full bg-light-button-primary text-light-button-text dark:bg-dark-button-primary dark:text-dark-button-text font-small shadow-button hover:shadow-button-hover">
               Digital Analytics
             </span>
             <span>•</span>
@@ -292,6 +281,21 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             <span>•</span>
             <span>Updated: April 10, 2024</span>
           </div>
+          <div className="flex items-center mt-4 mb-6">
+              <img 
+                src="/images/auth_jc.webp"
+                alt="John Christopher"
+                className="w-12 h-12 rounded-full mr-4"
+              />
+              <div>
+              <p className="text-sm font-medium text-light-text dark:text-dark-text">
+                John Christopher
+              </p>
+            <p className="text-xs text-light-text/80 dark:text-dark-text/70 leading-tight">
+               Entrepreneur · Marketing Technologist · Polyglot
+              </p>
+              </div>
+            </div>
         </header>
 
         {/* Auto-generated TOC */}

@@ -17,7 +17,7 @@ export const TapToReveal = ({
   return (
     <span 
       onClick={() => setRevealed(!revealed)}
-      className={`cursor-pointer underline underline-offset-4 decoration-dotted ${className}`}
+      className={`cursor-pointer ${className}`}
     >
       {revealed ? children : revealText}
     </span>

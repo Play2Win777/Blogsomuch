@@ -22,14 +22,8 @@
     backface-visibility: hidden;
     height: 100%; /* Ensure it always tries to fill the parent height */
     box-sizing: border-box;
-    
   }
   
-  /* Typewriter cursor effect */
-  .typewriter::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
-  }
   @keyframes toast {
     0% { opacity: 0; transform: translate(-50%, 20px); }
     10% { opacity: 1; transform: translate(-50%, 0); }
@@ -346,10 +340,26 @@
   }
   
   /* Typewriter cursor */
-  .typewriter::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
-  }
+.typewriter::after {
+  content: '|';
+  opacity: 1;
+}
+
+/* Infinite blinking during typing */
+.typewriter.typing::after {
+  animation: blink 1s step-end infinite;
+}
+
+/* 3 blinks after typing */
+.typewriter.blinking-after::after {
+  animation: blink 1s step-end;
+  animation-iteration-count: 3;
+}
+
+/* No cursor when not typing or blinking */
+.typewriter:not(.typing):not(.blinking-after)::after {
+  content: ''; /* Cursor disappears */
+}
   
   @keyframes blink {
     from, to { opacity: 1; }

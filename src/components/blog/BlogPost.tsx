@@ -1,12 +1,14 @@
 // src/components/blog/BlogPost.tsx
+import { Helmet } from 'react-helmet';
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from './ThemeContext';
+import { CardGrid } from './ui/CardGrid';
 import { Card } from './ui/Card';
 import { Typewriter } from './ui/Typewriter';
 import { TapToReveal } from './ui/TapToReveal';
 import { useRewardCheck } from "../../hooks/useRewardCheck";
 import '../../styles/blog.css';
-import { Helmet } from 'react-helmet';
+
 
 
 export const BlogPost = ({ slug }: { slug: string }) => {
@@ -25,31 +27,31 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   // Handle scroll progress
   useEffect(() => {
     let lastScrollTop = window.scrollY;
-    const scrollThreshold = 31; // pixels
-
+    const scrollThreshold = 31;
+    let timeout: NodeJS.Timeout;
+  
     const handleScroll = () => {
-      if (!contentRef.current) return;
-      
-      const scrollHeight = contentRef.current.scrollHeight - window.innerHeight;
-      const scrollTop = window.scrollY;
-      const scrollProgress = (scrollTop / scrollHeight) * 100;
-      setProgress(scrollProgress);
-      
-      // Show sidebar after intro
-      setShowSidebar(scrollTop > 2500);
-      
-      // New scroll direction logic
-      if (scrollTop > lastScrollTop) {
-        setShowMenu(false); // Hide on scroll down
-      } else if (lastScrollTop - scrollTop > scrollThreshold) {
-        setShowMenu(true); // Show only after intentional scroll up
-      }
-    
-      lastScrollTop = scrollTop;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        if (!contentRef.current) return;
+        const scrollHeight = contentRef.current.scrollHeight - window.innerHeight;
+        const scrollTop = window.scrollY;
+        setProgress((scrollTop / scrollHeight) * 100);
+        setShowSidebar(scrollTop > 2500);
+        if (scrollTop > lastScrollTop) {
+          setShowMenu(false);
+        } else if (lastScrollTop - scrollTop > scrollThreshold) {
+          setShowMenu(true);
+        }
+        lastScrollTop = scrollTop;
+      }, 100);
     };
-
+  
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Track time on page
@@ -375,36 +377,23 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         </section>
 
         {/* Card grid section */}
-      <section id="key-challenges" className="mb-16">
-        <h2 className="text-2xl font-bold mb-8">Key Challenges Visualized</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-2">
-          {cardData.map((card, index) => (
-            <div
-              key={card.id}>
-              <Card
-                id={card.id}
-                title={card.title}
-                content={card.content}
-                longContent={card.longContent}
-                image={card.image}
-                theme={theme}
-                isClicked={clickedCards.includes(card.id)} // Control glow
-                onCardClick={handleCardClick} // Open modal
-                onNextCard={index < cardData.length - 1 ? handleNextCard : undefined} // Next button
-                onExit={handleExit} // Close modal
-                isModalOpen={openCardId === card.id} // Show modal
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+        <CardGrid 
+        title="Key Challenges Visualized"
+        cards={cardData}
+        theme={theme}
+        clickedCards={clickedCards}
+        openCardId={openCardId}
+        onCardClick={handleCardClick}
+        onNextCard={handleNextCard}
+        onExit={handleExit}
+        />
 
       <section id="future-perspective" className="mb-16 space-y-12">
   <div className="relative group">
-    <h2 className="text-3xl font-bold mb-8 text-light-accent dark:text-dark-accent border-l-4 border-current pl-4">
+    <h2 className="text-3xl font-bold mb-8 text-light-accent dark:text-dark-accent">
       <Typewriter 
         text="Navigating Suriname's Digital Frontier"
-        speed={25}
+        speed={'normal'}
         pause={1000}
       />
     </h2>
@@ -413,30 +402,30 @@ export const BlogPost = ({ slug }: { slug: string }) => {
     <div className="bg-light-card-bg dark:bg-dark-card-bg p-6 rounded-xl border-2 border-light-accent-secondary dark:border-dark-accent-secondary mb-8">
       <Typewriter
         text="Linguistic Landscape:"
-        speed={30}
+        speed={'normal'}
         className="text-lg font-semibold mb-3 text-light-accent dark:text-dark-accent"
       />
       <p className="text-light-text dark:text-dark-text">
         <Typewriter
           text="Suriname's digital conversations flow through "
-          speed={10}
+          speed={'normal'}
         />
         <span className="text-light-accent dark:text-dark-accent font-medium">Dutch</span>
         <Typewriter
           text=" (official), "
-          speed={10}
+          speed={'normal'}
           delay={1500}
         />
         <span className="text-light-accent dark:text-dark-accent font-medium">Sranan Tongo</span>
         <Typewriter
           text=" (street), and "
-          speed={10}
+          speed={'normal'}
           delay={3000}
         />
         <span className="text-light-accent dark:text-dark-accent font-medium">5+ regional languages</span>
         <Typewriter
           text=" - each creating data silos."
-          speed={10}
+          speed={'normal'}
           delay={4500}
         />
       </p>
@@ -444,89 +433,88 @@ export const BlogPost = ({ slug }: { slug: string }) => {
 
     {/* Interactive Business Strategy */}
     <TapToReveal 
-      revealText="🚀 Reveal Market Strategies"
-      className="bg-gradient-to-r from-light-accent/10 to-light-accent-secondary/10 dark:from-dark-accent/10 dark:to-dark-accent-secondary/10 p-1 rounded-lg border-2 border-dashed border-light-accent dark:border-dark-accent"
-      revealClassName="bg-light-card-bg dark:bg-dark-card-bg p-6 rounded-lg shadow-lg"
-    >
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-light-accent dark:text-dark-accent">
-          Survival Toolkit for Businesses
-        </h3>
-        <ul className="space-y-3 list-check">
-          <li className="flex items-start">
-            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
-            <Typewriter
-              text="Triangulate data from social media + local influencers + radio trends"
-              speed={20}
-            />
-          </li>
-          <li className="flex items-start">
-            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
-            <Typewriter
-              text="Develop Creole-language NLP models for authentic insights"
-              speed={20}
-              delay={1500}
-            />
-          </li>
-          <li className="flex items-start">
-            <span className="text-light-accent dark:text-dark-accent mr-2">▷</span>
-            <Typewriter
-              text="Partner with Suriname's Digital Transformation Agency (2025 launch)"
-              speed={20}
-              delay={3000}
-            />
-          </li>
-        </ul>
-      </div>
-    </TapToReveal>
-
-    {/* Future Timeline */}
-    <div className="relative pt-8">
-      <div className="absolute left-5 h-full w-0.5 bg-light-accent/20 dark:bg-dark-accent/20"></div>
-      
-      <h3 className="text-xl font-semibold mb-6 text-light-accent dark:text-dark-accent pl-8">
-        <Typewriter 
-          text="Horizon Scan: 2024-2027"
-          speed={25}
+  revealText={<span>🚀<span className="ml-3 font-medium">Reveal Market Strategies</span></span>}
+  className="rounded-lg"
+>
+  <div className="space-y-4 pt-8 pb-8">
+    <h3 className="text-xl font-semibold text-light-accent dark:text-dark-accent pl-8">
+      <Typewriter 
+        text="Survival Toolkit for Businesses"
+        speed={'normal'}
+      />
+    </h3>
+    <div className="space-y-6 pl-8">
+      <div className="relative">
+        <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+        <Typewriter
+          text="Triangulate data from social media + local influencers + radio trends"
+          speed={'normal'}
+          className="text-light-text dark:text-dark-text font-medium"
         />
-      </h3>
-
-      <div className="space-y-6 pl-8">
-        <div className="relative">
-          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
-          <Typewriter
-            text="2024 Q4: CARICOM data-sharing pact ratification"
-            speed={20}
-            className="text-light-text dark:text-dark-text font-medium"
-          />
-        </div>
-        
-        <div className="relative">
-          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
-          <Typewriter
-            text="2025: Launch of Surinamese Creole voice search"
-            speed={20}
-            delay={1000}
-            className="text-light-text dark:text-dark-text font-medium"
-          />
-        </div>
-
-        <div className="relative">
-          <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
-          <Typewriter
-            text="2026: 85% internet penetration target"
-            speed={20}
-            delay={2000}
-            className="text-light-text dark:text-dark-text font-medium"
-          />
-        </div>
+      </div>
+      <div className="relative">
+        <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+        <Typewriter
+          text="Develop Creole-language NLP models for authentic insights"
+          speed={'normal'}
+          className="text-light-text dark:text-dark-text font-medium"
+        />
+      </div>
+      <div className="relative">
+        <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+        <Typewriter
+          text="Partner with Suriname's Digital Transformation Agency (2025 launch)"
+          speed={'normal'}
+          className="text-light-text dark:text-dark-text font-medium"
+        />
       </div>
     </div>
+  </div>
+</TapToReveal>
+
+{/* Future Timeline */}
+<div className="relative pt-8 pb-8">
+  <h3 className="text-xl font-semibold mb-6 text-light-accent dark:text-dark-accent pl-8">
+    <Typewriter 
+      text="Horizon Scan: 2024-2027"
+      speed={'normal'}
+    />
+  </h3>
+
+  <div className="space-y-6 pl-8">
+    <div className="relative">
+      <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+      <Typewriter
+        text="2024 Q4: CARICOM data-sharing pact ratification"
+        speed={'normal'}
+        className="text-light-text dark:text-dark-text font-medium"
+      />
+    </div>
+    
+    <div className="relative">
+      <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+      <Typewriter
+        text="2025: Launch of Surinamese Creole voice search"
+        speed={'normal'}
+        className="text-light-text dark:text-dark-text font-medium"
+      />
+    </div>
+
+    <div className="relative">
+      <div className="absolute w-3 h-3 rounded-full bg-light-accent dark:bg-dark-accent -left-8 top-2"></div>
+      <Typewriter
+        text="2026: 85% internet penetration target"
+        speed={'normal'}
+        className="text-light-text dark:text-dark-text font-medium"
+      />
+    </div>
+  </div>
+</div>
 
     {/* Conclusion Integration */}
     <TapToReveal
-      revealText="🔍 Reveal Key Insight"
-      className="mt-12 border-t-2 border-light-accent/30 dark:border-dark-accent/30 pt-8"
+      revealText={<span>🔍<span className="ml-3 font-medium">Reveal Key Insight</span></span>}
+      className="mt-12 pt-8"
     >
       <blockquote className="text-xl italic text-light-text dark:text-dark-text p-6 bg-light-card-bg dark:bg-dark-card-bg rounded-xl">
         "Suriname's data challenges reveal a fundamental truth: our analytics paradigms 

@@ -10,6 +10,7 @@ import { useSettingsStore } from './store';
 import { ThemeProvider } from './components/blog/ThemeContext';
 import BlogPage from './pages/BlogPage';
 import './styles/blog.css';
+import Cheatsheet from './pages/Cheatsheet';
 
 
 // Simple seedable random number generator
@@ -358,6 +359,7 @@ function App() {
             <BlogPage />
           </ThemeProvider>
         } />
+        <Route path="/cheatsheet" element={<Cheatsheet />} />
       </Routes>
     </div>
   );

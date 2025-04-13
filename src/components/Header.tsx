@@ -52,6 +52,12 @@ export const Header: React.FC = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const getLogo = () => {
+    return theme === 'dark' 
+      ? '/images/logo3.gif' 
+      : '/images/logo.gif'; // Or vice versa
+  };
+
   const handleLargeCellInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLargeCellInput(e.target.value);
     const indices = e.target.value
@@ -121,9 +127,15 @@ export const Header: React.FC = () => {
             </div>
           </div>
         )}
+        <img
+  src={getLogo()}
+  alt="/images/8BIT.png"
+  className="w-auto h-14 rounded-lg object-cover"
+  />
+        {/*  
         <div className="text-xl font-bold text-light-text dark:text-dark-text mx-4">
           My Store
-        </div>
+        </div> */}
         {/* Right side icons */}
         <div className="flex items-center space-x-2">
           {/* Lightbulb theme toggle */}

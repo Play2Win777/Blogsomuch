@@ -5,7 +5,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Light Mode
+        // Original colors from first Home.tsx
+        navy: '#1B263B',
+        electric: '#D90429',
+        hoverBlue: '#EF233C',
+        coolGray: '#8D5524',
+        lightGray: '#F5E6CC',
+        darkBg: '#2C1B18',
+        cardDark: '#3F2E2A',
+        // Your existing light mode colors
         light: {
           primary: '#fdfdfd',
           text: '#1e293b',
@@ -18,17 +26,17 @@ export default {
             border: '#475569',
           },
           flipped: {
-            bg: '#fffae6',       // Light yellow background
-            text: '#ff007a',     // Pink text
-            border: '#ffd700'    // Gold border
+            bg: '#fffae6', // Light yellow background
+            text: '#ff007a', // Pink text
+            border: '#ffd700', // Gold border
           },
           button: {
             primary: '#ff007a',
             secondary: '#00b4d8',
             text: '#ffffff',
-          }
+          },
         },
-        // Dark Mode
+        // Your existing dark mode colors
         dark: {
           primary: '#111827',
           text: '#f3f4f6',
@@ -41,20 +49,24 @@ export default {
             border: '#374151',
           },
           flipped: {
-            bg: '#1a1a2e',       // Dark navy background
-            text: '#a5b4fc',     // Light lavender text
-            border: '#6366f1'    // Indigo border
+            bg: '#1a1a2e', // Dark navy background
+            text: '#a5b4fc', // Light lavender text
+            border: '#6366f1', // Indigo border
           },
           button: {
             primary: '#3b82f6',
             secondary: '#10b981',
             text: '#ffffff',
-          }
-        }
+          },
+        },
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
       },
       boxShadow: {
-        'button': '0 2px 4px rgba(0, 0, 0, 0.1)',
-        'button-hover': '0 4px 6px rgba(0, 0, 0, 0.1)'
+        button: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        'button-hover': '0 4px 6px rgba(0, 0, 0, 0.1)',
+        'card-hover': '0 8px 32px rgba(37, 99, 235, 0.1)', // For Home.tsx
       },
       animation: {
         'neon-pulse': 'neonPulse 2s ease-in-out infinite',
@@ -68,8 +80,7 @@ export default {
         'sleek-glow': 'sleekGlow 2s ease-in-out infinite',
         'cta-glow': 'ctaGlow 2s ease-in-out infinite',
         'new-item-glow': 'newItemGlow 2s ease-in-out infinite',
-    },
-      
+      },
       keyframes: {
         neonPulse: {
           '0%, 100%': { opacity: '0.5', filter: 'brightness(1) blur(8px)' },

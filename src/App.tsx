@@ -11,6 +11,7 @@ import { ThemeProvider } from './components/blog/ThemeContext';
 import BlogPage from './pages/BlogPage';
 import './styles/blog.css';
 import Cheatsheet from './pages/Cheatsheet';
+import Websites from './pages/Websites';
 
 
 // Simple seedable random number generator
@@ -360,6 +361,7 @@ function App() {
           </ThemeProvider>
         } />
         <Route path="/cheatsheet" element={<Cheatsheet />} />
+        <Route path="/websites" element={<Websites />} />
       </Routes>
     </div>
   );

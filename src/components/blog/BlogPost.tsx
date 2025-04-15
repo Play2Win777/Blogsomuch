@@ -24,6 +24,8 @@ export const BlogPost = ({ slug }: { slug: string }) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const { shouldReward, grantReward } = useRewardCheck(slug);
 
+  const [isTocExpanded, setIsTocExpanded] = useState(false);
+
   // Handle scroll progress
   useEffect(() => {
     let lastScrollTop = window.scrollY;
@@ -326,31 +328,70 @@ export const BlogPost = ({ slug }: { slug: string }) => {
             </div>
         </header>
 
-        {/* Auto-generated TOC */}
-        <div className="mb-12 p-6 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg">
-          <h3 className="text-xl font-bold mb-4">Table of Contents</h3>
-          <ul className="space-y-2">
-            {[
-              'Introduction',
-              'The Digital Landscape of Suriname',
-              'Population Challenges',
-              'Infrastructure Limitations',
-              'Language Complexity',
-              'Technical Barriers',
-              'What This Means for Businesses',
-              'Future Outlook',
-              'Conclusion'
-            ].map((item) => (
-              <li key={item}>
-                <a 
-                  href={`#${item.toLowerCase().replace(/ /g, '-')}`}
-                  className="hover:underline text-light-accent dark:text-dark-accent"
-                >
-                  {item}
-                </a>
-              </li>
-            ))}
-          </ul>
+        
+        <div className="mb-12 flex flex-col md:flex-row gap-8 w-full">
+  {/* TOC Container - now takes up space naturally with flex */}
+  <div className="md:sticky md:top-4 md:self-start flex-1">
+    <div 
+      className="p-6 rounded-lg border-2 border-light-accent-secondary bg-light-card-bg dark:border-dark-accent-secondary dark:bg-dark-card-bg transition-all duration-300 cursor-pointer"
+      onClick={() => setIsTocExpanded(!isTocExpanded)}
+    >
+      <h3 
+        id="toc-heading"
+        className={`text-xl font-bold mb-4 transition-colors ${
+          isTocExpanded 
+            ? 'text-light-text dark:text-dark-text' 
+            : 'text-light-accent dark:text-dark-accent'
+        }`}
+      >
+        Table of Contents
+      </h3>
+      <nav 
+        aria-labelledby="toc-heading"
+        className={`transition-all duration-300 overflow-hidden ${
+          isTocExpanded ? 'max-h-96' : 'max-h-0'
+        }`}
+      >
+      <ul className="space-y-2">
+        {[
+          'Introduction',
+          'The Digital Landscape of Suriname',
+          'Key Challenges Visualized',
+        ].map((item) => (
+          <li key={item}>
+            <a 
+              href={`#${item.toLowerCase().replace(/ /g, '-')}`}
+              className="hover:underline text-light-accent dark:text-dark-accent block py-1 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.getElementById(item.toLowerCase().replace(/ /g, '-'));
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  </div>
+  
+          {/* Empty space container - now appears to the right */}
+          <div className="hidden md:block w-2/3 flex-shrink-0">
+  <div className="group p-4 rounded-lg border-2 border-dashed border-transparent dark:border-transparent h-full
+                  hover:border-gray-300 hover:dark:border-gray-600
+                  transition-all duration-300">
+    {/* Placeholder for future content */}
+    <p className="text-sm text-center text-transparent
+                  group-hover:text-gray-500 group-hover:dark:text-gray-400
+                  transition-all duration-300">
+      Ad Space
+    </p>
+  </div>
+</div>
         </div>
 
         {/* Introduction Section */}
@@ -377,6 +418,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         </section>
 
         {/* Card grid section */}
+        <section id="key-challenges-visualized">
         <CardGrid 
         title="Key Challenges Visualized"
         cards={cardData}
@@ -387,6 +429,7 @@ export const BlogPost = ({ slug }: { slug: string }) => {
         onNextCard={handleNextCard}
         onExit={handleExit}
         />
+        </section>
 
       <section id="future-perspective" className="mb-16 space-y-12">
   <div className="relative group">
